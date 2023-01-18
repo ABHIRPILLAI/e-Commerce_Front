@@ -1,0 +1,106 @@
+
+
+
+
+
+
+
+<div class="p1" *ngIf="cartitems.length==0">
+    <div  class="container border border-primary  p-5 m-5">
+        <div class="row text-center">
+            <div class="col">
+                <img src="https://cdn.dribbble.com/users/5107895/screenshots/14532312/media/a7e6c2e9333d0989e3a54c95dd8321d7.gif" width="40%" alt="">
+                <h3 class="mt-3"> Your Cart is Empty</h3>
+                <button routerLink="/" class="btn btn-primary mt-2"> Shop Now
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="p1">
+    <div class="container" *ngIf="cartitems.length!=0" >
+
+
+        <div class="row">
+            <div class="col">
+                <table class="table border border-dark  m-2">
+                <thead>
+                    <tr >
+                        <th>Number</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of cartitems;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{product.title}}</td>
+                        <td><img [src]="product.image" width="100px" alt=""></td>
+                        <td>{{product.description}}</td>
+                        <td>${{product.price}}</td>
+                        <td><i class="fa fa-trash text-danger" (click)="removeitem(product)"></i></td>
+    
+                    </tr>
+                 
+                </tbody>
+                </table>
+                <div style="float: right;" class="mb-3 mt-3">
+                    <button class="btn btn-danger" (click)="remove()">Empty Cart</button>
+                    &nbsp;
+                    <button class="btn btn-warning">Veiw More</button>
+                    &nbsp;
+                    <button class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Checkout</button>
+                    <b class="ms-3">Grand Total:${{summ}}0</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Checkout Page</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h2>
+            <b>            Delivery Address </b>
+          </h2>
+          <form action="" class="form-control p-3  ">
+            <input class="form-control" type="text" placeholder="Name"> <br>
+            <input class="form-control" type="text" placeholder="Address"> <br>
+            <input class="form-control" type="text" placeholder="PinCode"><br>
+            <input class="form-control" type="text" placeholder="State"><br>
+            <input class="form-control" type="text" placeholder="Country"><br>
+            <input class="form-control"    type="text" placeholder="Contact Number"><br>
+            <input class="form-control"    type="text" placeholder="Email"><br>
+
+
+
+          </form>
+          <div [ngSwitch]="summ">
+            <h4>Discounts</h4>
+            <img *ngSwitchCase=""  (click)="discount3($event.target)" src="https://t4.ftcdn.net/jpg/00/98/97/57/360_F_98975745_sgSVAhoA5L8DgfEgoamIEZcKh0J6aBNI.jpg" width="100px" alt="">
+            <img *ngSwitchCase="10" (click)="discount10()" src="https://www.shutterstock.com/image-vector/10-sale-special-offers-off-260nw-1863594694.jpg" width="100px" alt="">
+            <img *ngSwitchCase="15" (click)="discount15()" src="https://t3.ftcdn.net/jpg/03/00/24/44/360_F_300244400_MNM8KVzK9NaznwTf9SfUKzsb0fv422sF.jpg" width="100px" alt="">
+            <img *ngSwitchCase="30" (click)="discount30()" src="https://c8.alamy.com/comp/2CY8X98/30-discount-sales-vector-badges-for-labels-stickers-banners-tags-web-stickers-new-offer-discount-origami-sign-banner-2CY8X98.jpg" width="100px" alt="">
+            <img *ngSwitchDefault="3 " (click)="discount3($event.target)" src="https://media.istockphoto.com/id/1136155337/vector/promo-code-coupon-code-flat-vector-set-design-illustration-on-white-background.jpg?s=612x612&w=0&k=20&c=sM95EWp2rPqPfp0pGxKi4Jkjgz-0buvGtSSZkNQYIao=" width="100px" alt="">
+          </div>
+          <div>
+            <h5>Your Grand Total is here-->{{discountamount}}</h5>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="alert()" data-bs-dismiss="modal">Proceed</button>
+        </div>
+      </div>
+    </div>
+  </div>

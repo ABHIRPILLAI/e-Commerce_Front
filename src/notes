@@ -1,0 +1,50 @@
+
+// NEW CONCEPT
+
+// // import bs,JSON,fontawsome
+// LAZY LOADING
+//         // it is a process of loadinng Components,modules etc
+            //IMPROVE APPLICATION LOADING TIME
+//ng g m products --route products --module app.module
+
+
+//add router outlet in a.c.h
+
+//create components that should be loaded in the products module
+//-----------------------all-product--ng g c products/all-products
+//-----------------------cart--ng g c products/cart
+//-----------------------wish-list--ng g c products/wish-list
+
+
+
+//setup path for each component
+ ///product.module file
+
+//create page not found--ng g c page-not found
+
+ //** --- for pagenotfoundx
+
+//create header and footer
+
+                //ng g c header
+                //ng g c footer
+
+//design components
+
+//backend intergration
+
+//angular service
+
+        // ng g s products/api
+
+
+
+//import HttpClientModule in product module
+//dependacy injection in api.service==-----httpclient
+
+//intergration 
+
+//design of wishlist and cart
+
+//search concept
+                //ng g p products/pipes/filter
